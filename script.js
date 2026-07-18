@@ -40,3 +40,24 @@ function calculate() {
         display.innerText = "Error";
     }
 }
+// إضافة مستمع للأحداث عند الضغط على لوحة المفاتيح
+document.addEventListener('keydown', function(event) {
+    const key = event.key;
+
+    // دعم الأرقام والعمليات الحسابية
+    if (/[0-9]/.test(key) || key === '+' || key === '-' || key === '*' || key === '/' || key === '.' || key === '%') {
+        appendToDisplay(key);
+    }
+    // زر الإدخال (Enter) للعمليات الحسابية
+    else if (key === 'Enter') {
+        calculate();
+    }
+    // زر المسح (Backspace) للحذف
+    else if (key === 'Backspace') {
+        deleteLast();
+    }
+    // زر الهروب (Escape) للمسح الشامل
+    else if (key === 'Escape') {
+        clearDisplay();
+    }
+});
